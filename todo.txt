@@ -1,0 +1,13 @@
+1. viewing items
+2. adding items
+3. removing items
+4. graph for price change over time
+5. section for calculating meal costs
+6. section for tracking spendings per month 
+7. graph for each product type spendings over time 
+
+
+
+
+
+
