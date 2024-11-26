@@ -1,16 +1,16 @@
 import tkinter
 from tkinter import ttk
-import sv_ttk
+import sv_ttk, os
 from var import project_path
-from func.createdb import createdb
+import func
 #Everything main window related. Mostly misc
 root = tkinter.Tk()
 root.geometry("800x500")
-root.maxsize(900, 800)
+root.maxsize(1000, 900)
 
 #Checking whether database exists />/ creating it 
-print(project_path)
-createdb()
+if(os.path.exists(project_path+"\\db.db")==False):
+    func.createdb()
 
 tabControl = ttk.Notebook(root) 
 tabAdd = ttk.Frame(tabControl) 
