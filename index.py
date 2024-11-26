@@ -9,7 +9,6 @@ root.geometry("800x500")
 root.maxsize(900, 800)
 
 #Checking whether database exists />/ creating it 
-print("hhhhhhhh")
 print(project_path)
 createdb()
 
