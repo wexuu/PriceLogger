@@ -11,6 +11,7 @@ root.maxsize(1000, 900)
 #Checking whether database exists />/ creating it 
 if(os.path.exists(project_path+"\\db.db")==False):
     func.createdb()
+#hihi
 
 tabControl = ttk.Notebook(root) 
 tabAdd = ttk.Frame(tabControl) 
