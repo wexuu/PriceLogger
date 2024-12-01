@@ -2,16 +2,17 @@ import tkinter as tk
 from tkinter import ttk
 import os
 from var import project_path
+import sqlite3 
 #Everything main window related. Mostly misc
 root = tk.Tk()
 root.geometry("800x500")
 root.maxsize(1000, 900)
 
 #Checking whether database exists />/ creating it 
-if(os.path.exists(project_path+"\\db.db")==False):
-    import func.createdb
-    print(func.createdb.createdb())
-
+#if(os.path.exists(project_path+"\\db.db")==False):
+ #   import func.createdb
+  #  print(func.createdb.createdb())
+con = sqlite3.connect("db.db")
 
 tabControl = ttk.Notebook(root) 
 tabAdd = tk.Frame(tabControl) 
@@ -30,16 +31,24 @@ tk.Label(tabDel,
     text ="usuwanie itemow").grid(column = 0, row = 0)
 
 name_var=tk.StringVar()
-passw_var=tk.StringVar()
+type_var=tk.StringVar()
+price_var=tk.StringVar()
+shop_var=tk.StringVar()
+date_var=tk.StringVar()
 
 
 def submit():
 
     name=name_var.get()
-    
-    print("The name is : " + name)
-    
-    name_var.set("")
+    type = type_var.get()
+    price = price_var.get()
+    shop = shop_var.get()
+    date = date_var.get()
+    cur = con.cursor()
+    cur.execute(f"""
+    INSERT INTO products VALUES ({type},{price},{shop},{name},{date})
+    """)
+    con.commit()
 
 
 name_label = tk.Label(tabView, text = 'Username', font=('calibre',10, 'bold'), width=30).grid(padx=20,pady=20)
@@ -47,6 +56,10 @@ name_label = tk.Label(tabView, text = 'Username', font=('calibre',10, 'bold'), w
 # creating a entry for input
 # name using widget Entry
 name_entry = tk.Entry(tabView,textvariable = name_var, font=('calibre',10,'normal'), width=30).grid(padx=20,pady=20)
+type_entry = tk.Entry(tabView,textvariable = type_var, font=('calibre',10,'normal'), width=30).grid(padx=20,pady=20)
+price_entry = tk.Entry(tabView,textvariable = price_var, font=('calibre',10,'normal'), width=30).grid(padx=20,pady=20)
+shop_entry = tk.Entry(tabView,textvariable = shop_var, font=('calibre',10,'normal'), width=30).grid(padx=20,pady=20)
+date_entry = tk.Entry(tabView,textvariable = date_var, font=('calibre',10,'normal'), width=30).grid(padx=20,pady=20)
 
 sub_btn=tk.Button(tabView,text = 'Submit', command = submit).grid(padx=20,pady=20)
 
