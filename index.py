@@ -51,7 +51,7 @@ def submit():
     con.commit()
 
 
-name_label = tk.Label(tabView, text = 'Username', font=('calibre',10, 'bold'), width=30).grid(padx=20,pady=20)
+name_label = tk.Label(tabView, text = 'Username1', font=('calibre',10, 'bold'), width=30).grid(padx=20,pady=20)
 
 # creating a entry for input
 # name using widget Entry
